@@ -20,13 +20,6 @@
     "Matching With Best Options...",
     "Confirming Eligibility..."
   ];
-  var notices = [
-    "Emily A. Rodriguez from Miami, FL just qualified for a $3,600 Grocery Allowance.",
-    "Michael D. Johnson from Dallas, TX just qualified for a $3,600 Grocery Allowance.",
-    "Sophia L. Thompson from Los Angeles, CA just qualified for a $3,600 Grocery Allowance.",
-    "Ethan M. Baker from Chicago, IL just qualified for a $3,600 Grocery Allowance.",
-    "Ava K. Campbell from Seattle, WA just qualified for a $3,600 Grocery Allowance."
-  ];
   var step = 0;
   var question = document.getElementById("question");
   var yesBtn = document.getElementById("yes");
@@ -36,8 +29,6 @@
   var doneView = document.getElementById("done-view");
   var mins = document.getElementById("mins");
   var secs = document.getElementById("secs");
-  var toast = document.getElementById("toast");
-  var emphClass = toast.getAttribute("data-emph");
 
   function showStep(i) {
     step = i;
@@ -78,19 +69,6 @@
 
   yesBtn.addEventListener("click", function () { choose("yesNext"); });
   noBtn.addEventListener("click", function () { choose("noNext"); });
-
-  function ping() {
-    var text = notices[Math.floor(Math.random() * notices.length)];
-    var safe = text.replace(/\$3,600 Grocery Allowance/g, '<strong class="' + emphClass + '">$3,600 Grocery Allowance</strong>');
-    toast.innerHTML = safe;
-    toast.classList.add("show");
-    setTimeout(function () { toast.classList.remove("show"); }, 5000);
-  }
-
-  setTimeout(function () {
-    ping();
-    setInterval(ping, 6000);
-  }, 6000);
 
   showStep(0);
 })();
